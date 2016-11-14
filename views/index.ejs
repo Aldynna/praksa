@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+
+</head>
+<body onload="getLocation()">
+
+<p id="demo"></p>
+<!--<button onclick="drop()">START</button>-->
+
+<button onclick="clearInterval(myVar)">Stop time</button>
+
+
+<div id="map"  ></div>
+<div id="map1"  ></div>
+
+<button onclick="granice()">JOS</button>
+<script>
+var x = document.getElementById("demo");
+var markers = [];
+var map;
+var latitude;
+var longitude;
+var uluru;
+var latlon;
+var icon;
+var bounds;
+pointsrand=[];
+var myVar;
+var southWest;
+var northEast;
+var latSpan;
+var lngSpan;
+
+function granice() {
+
+
+    bounds = map.getBounds();
+
+    southWest = bounds.getSouthWest();
+
+    northEast = bounds.getNorthEast();
+
+    lngSpan = northEast.lng() - southWest.lng();
+
+    latSpan = northEast.lat() - southWest.lat();
+myVar=window.setInterval(myTimer,randomNumber(2000))
+
+
+}
+
+function randomNumber(minimum, maximum){
+    return Math.round( Math.random() * (maximum - minimum) + minimum);
+}
+
+function getLocation() {
+if (navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(showPosition, showError);
+} else {
+x.innerHTML = "Geolocation is not supported by this browser.";
+}
+}
+
+function showPosition(position) {
+latitude  = position.coords.latitude;
+longitude = position.coords.longitude;
+latlon="lat:"+latitude+","+"lng:"+longitude;
+initMap()
+}
+
+
+function initMap() {
+uluru = {lat: latitude , lng: longitude};
+map = new google.maps.Map(document.getElementById('map'), {
+zoom: 20,
+center: uluru,
+    mapTypeId: 'roadmap',
+
+
+});
+    granice()
+
+}
+function  crtaj() {
+
+
+}
+function ikona()
+{
+icon = {
+url: 'http://wallpapercave.com/wp/aJCzeTw.png',
+scaledSize: new google.maps.Size(35, 35)
+
+};
+
+}
+function myTimer() {
+    var i=randomNumber(0,5);
+    pointsrand[i] = new google.maps.LatLng(southWest.lat() + latSpan * Math.random(), southWest.lng() + lngSpan * Math.random());
+    addMarkerWithTimeout(pointsrand[i], (i+2) * randomNumber(2000,3000),i);
+
+
+}
+function addMarkerWithTimeout(position, timeout,num) {
+    ikona();
+window.setTimeout(function() {
+markers[num]=(new google.maps.Marker({
+position: position,
+map: map,
+icon:icon,
+animation: google.maps.Animation.BOUNCE
+}));
+    clearMarkers(num);
+}, timeout);
+
+}
+
+function clearMarkers(num) {
+    window.setTimeout(function() {
+        markers[num].setMap(null);
+    }, randomNumber(1000,4000));
+}
+
+function showError(error) {
+switch(error.code) {
+case error.PERMISSION_DENIED:
+x.innerHTML = "User denied the request for Geolocation."
+break;
+case error.POSITION_UNAVAILABLE:
+x.innerHTML = "Location information is unavailable."
+break;
+case error.TIMEOUT:
+x.innerHTML = "The request to get user location timed out."
+break;
+case error.UNKNOWN_ERROR:
+x.innerHTML = "An unknown error occurred."
+break;
+}
+}
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVh0OoLuEvIpSNmmShYcvF5ZZy082g_Tc&callback=initMap">
+</script>
+</body>
+</html>
