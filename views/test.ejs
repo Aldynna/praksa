@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        function ucitaj() {
+            $.ajax({
+                method: "GET",
+                url: "/koord",
+                data: { username: "John", password: "Boston" }
+            })
+                    .done(function( msg ) {
+                        console.log(msg);
+                        //alert( "Data Saved: " + msg );
+                    });
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="/login">
+    <p>username: <input type="text" width="50" name="username"> </p>
+    <p>password: <input type="password" width="50" name="password"> </p>
+    <input type="submit">
+</form>
+<a href="#" onclick="ucitaj()">ucitaj</a>
+</body>
+</html>

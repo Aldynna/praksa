@@ -8,7 +8,13 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var bearer = require('bearer');
+var moment = require('moment');
+
+
 var app = express();
+//Setup authentication
+//This should be done before all routes are configured to assure that authorization will be first to execute
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
