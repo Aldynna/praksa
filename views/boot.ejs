@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=title%></title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+
+        $(function() {
+
+            var theWindow        = $(window),
+                    $bg              = $("#bg"),
+                    aspectRatio      = $bg.width() / $bg.height();
+
+            function resizeBg() {
+
+                if ( (theWindow.width() / theWindow.height()) < aspectRatio ) {
+                    $bg
+                            .removeClass()
+                            .addClass('bgheight');
+                } else {
+                    $bg
+                            .removeClass()
+                            .addClass('bgwidth');
+                }
+
+            }
+
+            theWindow.resize(function() {
+                resizeBg();
+            }).trigger("resize");
+
+        });
+    </script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button"  class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Pokemon GO!</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" placeholder="primjer@gmail.com" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control"data-toggle="tooltip" data-placement="bottom" title="Type your password">
+                </div>
+                <button onclick="getLocation()" type="submit"  class="btn btn-success" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" >Sign in</button>
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+
+
+<div class="container">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body"id="bg" >
+
+        <div class="jumbotron" id="op">
+            <div class="container" >
+                <h1>Pokemon GO!</h1>
+                <p>Postanite dio Pokemon GO ! zajednice. Istrazujte zajedno ili u timu. </p>
+
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Detaljnije &raquo;</a></p>
+            </div>
+        </div>
+                </div>
+            </div>
+        </div>
+    <!-- Example row of columns -->
+    <div class="panel panel-default">
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+    </div>
+        </div>
+    </div>
+        </div>
+    <div class="panel panel-default">
+
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" >
+        <div class="panel-body" id="nn">
+            <p id="demo"></p>
+            <button onclick="drop()">START</button>
+
+           <button onclick="clearInterval(myVar)">Stop time</button>
+
+
+            <!--<div id="map1"   >
+                <script>$( "#map" ).load( "/" )</script>
+            </div>-->
+            <div id="map"  >  </div>
+            <button onclick="getLocation()">JOS</button>
+            <script>
+                var username="aldina";
+                var x = document.getElementById("demo");
+                var markers = [];
+                var pokemoni=[];
+                var map;
+                var latitude;
+                var longitude;
+                var uluru;
+                var latlon;
+                var icon;
+                var bounds;
+                pointsrand=[];
+                var myVar;
+                var southWest;
+                var northEast;
+                var latSpan;
+                var lngSpan;
+                var time;
+                var pokemoni=new Array(5);
+                var marker;
+
+
+                function initMap() {
+                    uluru ={lat: latitude , lng: longitude};
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 20,
+                        center: uluru,
+                        mapTypeId: 'roadmap'
+                    });
+                    for(var j=0;j<5;j++) pokemoni[j]=0;
+                    myVar=window.setInterval(pomjeraj,2000);
+                    var image={
+                        url:'http://www.clipartkid.com/images/159/animated-man-walking-clipart-best-NAA0RZ-clipart.gif',
+                        scaledSize: new google.maps.Size(80, 80)};
+                    marker = new google.maps.Marker({
+                        position: uluru,
+                        map: map,
+                        icon:image,
+                        animation: true
+
+                    });
+                    granice()
+
+                }
+
+                function granice() {
+
+                    bounds = map.getBounds();
+                    southWest = bounds.getSouthWest();
+                    northEast = bounds.getNorthEast();
+                    lngSpan = northEast.lng() - southWest.lng();
+                    latSpan = northEast.lat() - southWest.lat();
+                    //myVar=window.setInterval(myTimer,2000);
+                    //myV=window.setInterval(pomjeraj,2000);
+                    //pomjeraj();
+                    //myTimer();
+
+                }
+
+
+
+                function randomNumber(minimum, maximum){
+                    return Math.round( Math.random() * (maximum - minimum) + minimum);
+                }
+
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.watchPosition(showPosition, showError);
+                    } else {
+                        x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                }
+
+                function showPosition(position) {
+                    latitude  = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    latlon="lat:"+latitude+","+"lng:"+longitude;
+                    initMap()
+                }
+
+
+
+
+                function ikona(da) {
+
+                    icon = {
+                        url:da.url, //'http://rs231.pbsrc.com/albums/ee83/spell-edicion/Togepix100.gif~c200',
+                        scaledSize: new google.maps.Size(35, 35)
+                    };
+                }
+
+                function pomjeraj() {
+                    $.ajax({
+                        method: "GET",
+                        url: "/koord",
+                        data: { username: "Aldy", password: "Boston" }
+                    })
+                            .done(function( msg ) {
+
+                                for(var i=0;i<5;i++) {
+                                    if (pokemoni[i] == 0) {
+                                        pokemoni[i] = 1,
+                                                pointsrand[i] =new google.maps.LatLng(msg.lt,msg.lon);
+                                        addMarkerWithTimeout(pointsrand[i], (i + 2) * randomNumber(1000, 2000), i,msg.pokemon);
+                                        i = 5;
+                                    }
+                                }
+                                // marker.setPosition(KK);
+                                //  map.setCenter(KK);
+                                //alert( "Data Saved: " + msg );
+                            });
+
+                    //var KK = {lat: granice.jug + latRaspon * Math.random(),
+                    //   lng: granice.istok + lngRaspon * Math.random()};
+                    //marker.setPosition(KK);
+                    // map.setCenter(KK);
+                }
+                function myTimer() {
+
+                    for(var i=0;i<5;i++)
+                    {
+                        if(pokemoni[i]==0) {
+                            pokemoni[i]=1,
+
+                                    pointsrand[i] = new google.maps.LatLng(southWest.lat() + latSpan * Math.random(), southWest.lng() + lngSpan * Math.random());
+                            addMarkerWithTimeout(pointsrand[i], (i + 2) * randomNumber(1000, 2000), i);
+                            i=5;
+                        }
+
+                    }
+
+                }
+                function addMarkerWithTimeout(position, timeout,num,pok) {
+
+                    ikona(pok);
+                    window.setTimeout(function() {
+                        markers[num]=(new google.maps.Marker({
+                            position: position,
+                            map: map,
+                            icon:icon,
+                            animation: true //google.maps.Animation.BOUNCE
+                        }));
+                        clearMarkers(num);
+
+                    }, timeout);
+
+
+                }
+
+
+
+                function clearMarkers(num) {
+                    markers[num].addListener('click', function() {
+                        map.setZoom(25);
+                        map.setCenter(markers[num].getPosition());
+                    });
+
+                    window.setTimeout(function() {
+                        markers[num].setMap(null);
+                        pokemoni[num]=0;
+                    }, randomNumber(2000,4000));
+
+                }
+
+                function showError(error) {
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            x.innerHTML = "User denied the request for Geolocation."
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            x.innerHTML = "Location information is unavailable."
+                            break;
+                        case error.TIMEOUT:
+                            x.innerHTML = "The request to get user location timed out."
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            x.innerHTML = "An unknown error occurred."
+                            break;
+                    }
+                }
+
+            </script>
+
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUdNOR_t00dUE5oObEiBcx9L3DVGGeBSI&callback=initMap">
+                </script>
+        </div>
+    </div>
+        </div>
+        </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; 2016 Company, Inc.</p>
+    </footer>
+</div> <!-- /container -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
