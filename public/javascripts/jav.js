@@ -1,4 +1,4 @@
-for(var i=0;i<4;++i)
+/*for(var i=0;i<4;++i)
 
 {
 
@@ -321,4 +321,4 @@ var div = document.getElementById('surabaya');
 var map = new google.maps.Map(div, options);
 var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
 map.mapTypes.set('Styled', styledMapType);
-};
+};*/

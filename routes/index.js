@@ -10,6 +10,15 @@ router.get('/', function(req, res, next) {
 router.get('/test', function(req, res, next) {
   res.render('test', { title: 'test' });
 });
+router.get('/login', function(req, res, next) {
+    res.render('login', { title: 'login' });
+});
+router.get('/boot', function(req, res, next) {
+    res.render('boot', { title: 'test' });
+});
+router.get('/kv', function(req, res, next) {
+    res.render('zavjezbu', { title: 'test' });
+});
 router.post('/login', function(req, res, next) {
   console.log(req.body);
   res.send({
@@ -24,9 +33,11 @@ router.get('/koord', function(req, res, next) {
     istok: 18.366025,
     zapad: 18.421501
   };
+
+
   var lt;
   var lon;
-      var poke=Math.round( Math.random() * 9 + 1);//(Math.random()*9)>>>0;
+      var poke=Math.round( Math.random() *9);//(Math.random()*9)>>>0;
   /*res.send({
   lt:southW.lat() + latS * Math.random(),
     lon:southW.lng() + lngS * Math.random()
@@ -35,9 +46,16 @@ router.get('/koord', function(req, res, next) {
 
   var lngRaspon = granice.zapad - granice.istok;
   var latRaspon = granice.sjever - granice.jug;
-      res.send({
+  /*res.send({
+    pokemon:pokemons[poke],
+    lt:LatLng.latitude,
+    lon:LatLng.longitude
+
+  })*/
+
+     res.send({
         pokemon:pokemons[poke],
-        lt:granice.jug + latRaspon * Math.random(),
+       lt:granice.jug + latRaspon * Math.random(),
           lon:granice.istok + lngRaspon * Math.random()
     })
 

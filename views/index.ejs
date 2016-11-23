@@ -40,6 +40,7 @@
     var lngSpan;
     var time;
     var pokemoni=new Array(5);
+    var marker;
 
 
     function initMap() {
@@ -51,7 +52,18 @@
         });
         for(var j=0;j<5;j++) pokemoni[j]=0;
         myVar=window.setInterval(pomjeraj,2000);
-       granice()
+        var image={
+            url:'http://www.clipartkid.com/images/159/animated-man-walking-clipart-best-NAA0RZ-clipart.gif',
+                scaledSize: new google.maps.Size(80, 80)};
+        marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+            icon:image,
+            animation: true
+
+        });
+        granice()
+
     }
 
  function granice() {
@@ -149,7 +161,7 @@
                 position: position,
                 map: map,
                 icon:icon,
-                animation: google.maps.Animation.BOUNCE
+                animation: true //google.maps.Animation.BOUNCE
             }));
             clearMarkers(num);
 
